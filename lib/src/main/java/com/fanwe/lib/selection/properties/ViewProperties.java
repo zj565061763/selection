@@ -43,15 +43,6 @@ public interface ViewProperties
     /**
      * 设置背景
      *
-     * @param resId   资源id
-     * @param context
-     * @return
-     */
-    ViewProperties setBackgroundResource(int resId, Context context);
-
-    /**
-     * 设置背景
-     *
      * @param color 颜色值
      * @return
      */
