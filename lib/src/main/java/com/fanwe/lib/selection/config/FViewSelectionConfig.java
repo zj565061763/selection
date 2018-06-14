@@ -22,50 +22,50 @@ import android.widget.TextView;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-public final class FViewSelectConfig
+public final class FViewSelectionConfig
 {
-    private static final Map<View, SelectConfig> MAP_CONFIG = new WeakHashMap<>();
+    private static final Map<View, SelectionConfig> MAP_CONFIG = new WeakHashMap<>();
 
-    private FViewSelectConfig()
+    private FViewSelectionConfig()
     {
     }
 
-    public static ViewSelectConfig config(View view)
+    public static ViewSelectionConfig config(View view)
     {
         if (view == null)
             return null;
 
-        final SelectConfig config = MAP_CONFIG.get(view);
-        if (config instanceof ViewSelectConfig)
-            return (ViewSelectConfig) config;
+        final SelectionConfig config = MAP_CONFIG.get(view);
+        if (config instanceof ViewSelectionConfig)
+            return (ViewSelectionConfig) config;
 
         final SimpleViewConfig newConfig = new SimpleViewConfig(view);
         MAP_CONFIG.put(view, newConfig);
         return newConfig;
     }
 
-    public static TextViewSelectConfig config(TextView view)
+    public static TextViewSelectionConfig config(TextView view)
     {
         if (view == null)
             return null;
 
-        final SelectConfig config = MAP_CONFIG.get(view);
-        if (config instanceof TextViewSelectConfig)
-            return (TextViewSelectConfig) config;
+        final SelectionConfig config = MAP_CONFIG.get(view);
+        if (config instanceof TextViewSelectionConfig)
+            return (TextViewSelectionConfig) config;
 
         final SimpleTextViewConfig newConfig = new SimpleTextViewConfig(view);
         MAP_CONFIG.put(view, newConfig);
         return newConfig;
     }
 
-    public static ImageViewSelectConfig config(ImageView view)
+    public static ImageViewSelectionConfig config(ImageView view)
     {
         if (view == null)
             return null;
 
-        final SelectConfig config = MAP_CONFIG.get(view);
-        if (config instanceof ImageViewSelectConfig)
-            return (ImageViewSelectConfig) config;
+        final SelectionConfig config = MAP_CONFIG.get(view);
+        if (config instanceof ImageViewSelectionConfig)
+            return (ImageViewSelectionConfig) config;
 
         final SimpleImageViewConfig newConfig = new SimpleImageViewConfig(view);
         MAP_CONFIG.put(view, newConfig);

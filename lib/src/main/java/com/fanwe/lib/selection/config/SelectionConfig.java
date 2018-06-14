@@ -20,7 +20,7 @@ import com.fanwe.lib.selection.properties.ViewProperties;
 /**
  * View的状态参数配置
  */
-public interface SelectConfig<T extends ViewProperties>
+public interface SelectionConfig<T extends ViewProperties>
 {
     /**
      * 设置当view的选中状态变化的时候是否自动更新UI，默认true-自动更新
@@ -28,7 +28,7 @@ public interface SelectConfig<T extends ViewProperties>
      * @param autoMode
      * @return
      */
-    SelectConfig setAutoMode(boolean autoMode);
+    SelectionConfig setAutoMode(boolean autoMode);
 
     /**
      * 初始化配置参数
@@ -36,14 +36,14 @@ public interface SelectConfig<T extends ViewProperties>
      * @param initer
      * @return
      */
-    SelectConfig init(PropertiesIniter<T> initer);
+    SelectionConfig init(PropertiesIniter<T> initer);
 
     /**
      * 清空配置
      *
      * @return
      */
-    SelectConfig clear();
+    SelectionConfig clear();
 
     /**
      * 设置选中状态
@@ -51,7 +51,7 @@ public interface SelectConfig<T extends ViewProperties>
      * @param selected
      * @return
      */
-    SelectConfig setSelected(boolean selected);
+    SelectionConfig setSelected(boolean selected);
 
     interface PropertiesIniter<T extends ViewProperties>
     {

@@ -20,7 +20,7 @@ import android.view.View;
 import com.fanwe.lib.selection.properties.FViewProperties;
 import com.fanwe.lib.selection.properties.TextViewProperties;
 
-class SimpleTextViewConfig extends BaseSelectConfig<TextViewProperties> implements TextViewSelectConfig
+class SimpleTextViewConfig extends BaseSelectionConfig<TextViewProperties> implements TextViewSelectionConfig
 {
     public SimpleTextViewConfig(View view)
     {

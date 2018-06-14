@@ -22,7 +22,7 @@ import com.fanwe.lib.selection.properties.ViewProperties;
 
 import java.lang.ref.WeakReference;
 
-abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfig<T>
+abstract class BaseSelectionConfig<T extends ViewProperties> implements SelectionConfig<T>
 {
     private final WeakReference<View> mView;
 
@@ -34,7 +34,7 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
     private final InternalOnPreDrawListener mOnPreDrawListener = new InternalOnPreDrawListener();
     private final InternalOnAttachStateChangeListener mOnAttachStateChangeListener = new InternalOnAttachStateChangeListener();
 
-    public BaseSelectConfig(View view)
+    public BaseSelectionConfig(View view)
     {
         if (view == null)
             throw new NullPointerException("view is null");
@@ -49,7 +49,7 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
     }
 
     @Override
-    public SelectConfig setAutoMode(boolean autoMode)
+    public SelectionConfig setAutoMode(boolean autoMode)
     {
         mAutoMode = autoMode;
 
@@ -59,7 +59,7 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
     }
 
     @Override
-    public SelectConfig init(PropertiesIniter<T> initer)
+    public SelectionConfig init(PropertiesIniter<T> initer)
     {
         if (mPropertiesNormal == null)
             mPropertiesNormal = newProperties();
@@ -74,7 +74,7 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
     protected abstract T newProperties();
 
     @Override
-    public SelectConfig clear()
+    public SelectionConfig clear()
     {
         mPropertiesNormal = null;
         mPropertiesSelected = null;
@@ -82,7 +82,7 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
     }
 
     @Override
-    public SelectConfig setSelected(boolean selected)
+    public SelectionConfig setSelected(boolean selected)
     {
         updateViewState(selected, getView());
         return this;

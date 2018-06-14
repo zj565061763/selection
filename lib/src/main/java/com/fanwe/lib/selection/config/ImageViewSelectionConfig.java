@@ -15,8 +15,8 @@
  */
 package com.fanwe.lib.selection.config;
 
-import com.fanwe.lib.selection.properties.ViewProperties;
+import com.fanwe.lib.selection.properties.ImageViewProperties;
 
-public interface ViewSelectConfig extends SelectConfig<ViewProperties>
+public interface ImageViewSelectionConfig extends SelectionConfig<ImageViewProperties>
 {
 }

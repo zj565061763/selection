@@ -17,6 +17,6 @@ package com.fanwe.lib.selection.config;
 
 import com.fanwe.lib.selection.properties.TextViewProperties;
 
-public interface TextViewSelectConfig extends SelectConfig<TextViewProperties>
+public interface TextViewSelectionConfig extends SelectionConfig<TextViewProperties>
 {
 }
