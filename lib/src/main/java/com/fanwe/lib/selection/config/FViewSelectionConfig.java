@@ -74,6 +74,8 @@ public final class FViewSelectionConfig
 
     public static void removeConfig(View view)
     {
-        MAP_CONFIG.remove(view);
+        final SelectionConfig config = MAP_CONFIG.remove(view);
+        if (config != null)
+            config.setAutoMode(false);
     }
 }
