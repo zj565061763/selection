@@ -45,3 +45,28 @@ public class MainActivity extends AppCompatActivity
     }
 }
 ```
+
+# 目前支持的配置
+* textColor
+TextView字体颜色
+
+* textSize  
+TextView字体大小
+
+* imageResId
+ImageView资源图片
+
+* background
+View的背景
+
+* alpha    
+View的透明度
+
+* width    
+View的宽度
+
+* height    
+View的高度
+
+* visibility
+View的可见状态
