@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.fanwe.lib.selection.config.FViewSelectionConfig;
+import com.fanwe.lib.selection.config.FViewSelection;
 import com.fanwe.lib.selection.config.SelectionConfig;
 import com.fanwe.lib.selection.properties.TextViewProperties;
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        FViewSelectionConfig.config(mTextView).setConfiger(new SelectionConfig.PropertiesConfiger<TextViewProperties>()
+        FViewSelection.config(mTextView).setConfiger(new SelectionConfig.PropertiesConfiger<TextViewProperties>()
         {
             @Override
             public void config(TextViewProperties normal, TextViewProperties selected)

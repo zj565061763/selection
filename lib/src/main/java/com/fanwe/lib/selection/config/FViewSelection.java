@@ -22,11 +22,11 @@ import android.widget.TextView;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-public final class FViewSelectionConfig
+public final class FViewSelection
 {
     private static final Map<View, SelectionConfig> MAP_CONFIG = new WeakHashMap<>();
 
-    private FViewSelectionConfig()
+    private FViewSelection()
     {
     }
 

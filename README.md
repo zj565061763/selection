@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        FViewSelectionConfig.config(mTextView).setConfiger(new SelectionConfig.PropertiesConfiger<TextViewProperties>()
+        FViewSelection.config(mTextView).setConfiger(new SelectionConfig.PropertiesConfiger<TextViewProperties>()
         {
             @Override
             public void config(TextViewProperties normal, TextViewProperties selected)
