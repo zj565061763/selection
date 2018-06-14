@@ -5,6 +5,8 @@
 `implementation 'com.fanwe.android:selection:1.0.0-beta1'`
 
 # 简单demo
+![](http://thumbsnap.com/i/jxj71QW0.gif?0614)
+
 ```java
 public class MainActivity extends AppCompatActivity
 {
