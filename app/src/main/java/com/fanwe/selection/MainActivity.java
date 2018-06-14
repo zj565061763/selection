@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        FViewSelectionConfig.config(mTextView).init(new SelectionConfig.PropertiesIniter<TextViewProperties>()
+        FViewSelectionConfig.config(mTextView).setConfiger(new SelectionConfig.PropertiesConfiger<TextViewProperties>()
         {
             @Override
-            public void init(TextViewProperties normal, TextViewProperties selected)
+            public void config(TextViewProperties normal, TextViewProperties selected)
             {
                 // 配置正常状态的参数
                 normal.setTextColor(Color.BLACK)

@@ -31,12 +31,12 @@ public interface SelectionConfig<T extends ViewProperties>
     SelectionConfig setAutoMode(boolean autoMode);
 
     /**
-     * 初始化配置参数
+     * 配置状态参数
      *
-     * @param initer
+     * @param configer
      * @return
      */
-    SelectionConfig init(PropertiesIniter<T> initer);
+    SelectionConfig setConfiger(PropertiesConfiger<T> configer);
 
     /**
      * 清空配置
@@ -53,7 +53,7 @@ public interface SelectionConfig<T extends ViewProperties>
      */
     SelectionConfig setSelected(boolean selected);
 
-    interface PropertiesIniter<T extends ViewProperties>
+    interface PropertiesConfiger<T extends ViewProperties>
     {
         /**
          * 配置选中和非选中状态的参数
@@ -61,6 +61,6 @@ public interface SelectionConfig<T extends ViewProperties>
          * @param normal
          * @param selected
          */
-        void init(T normal, T selected);
+        void config(T normal, T selected);
     }
 }
