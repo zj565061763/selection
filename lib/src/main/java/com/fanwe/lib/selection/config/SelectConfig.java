@@ -55,6 +55,12 @@ public interface SelectConfig<T extends ViewProperties>
 
     interface PropertiesIniter<T extends ViewProperties>
     {
+        /**
+         * 配置选中和非选中状态的参数
+         *
+         * @param normal
+         * @param selected
+         */
         void init(T normal, T selected);
     }
 }
