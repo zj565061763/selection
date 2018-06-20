@@ -2,7 +2,7 @@
 管理android view的选中状态
 
 # Gradle
-`implementation 'com.fanwe.android:selection:1.0.0-beta1'`
+`implementation 'com.fanwe.android:selection:1.0.0-beta2'`
 
 # 简单demo
 ![](http://thumbsnap.com/i/jxj71QW0.gif?0614)
