@@ -30,9 +30,7 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
     private T mPropertiesSelected;
     private boolean mSelected;
 
-    private boolean mAutoMode;
     private final InternalOnPreDrawListener mOnPreDrawListener = new InternalOnPreDrawListener();
-    private final InternalOnAttachStateChangeListener mOnAttachStateChangeListener = new InternalOnAttachStateChangeListener();
 
     public BaseSelectionConfig(View view)
     {
@@ -51,10 +49,7 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
     @Override
     public SelectionConfig setAutoMode(boolean autoMode)
     {
-        mAutoMode = autoMode;
-
         mOnPreDrawListener.register(autoMode);
-        mOnAttachStateChangeListener.register(autoMode);
         return this;
     }
 
@@ -137,7 +132,6 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
             if (observer.isAlive())
             {
                 observer.removeOnPreDrawListener(this);
-
                 if (register)
                 {
                     observer.addOnPreDrawListener(this);
@@ -151,34 +145,6 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
         {
             updateStateIfNeed();
             return true;
-        }
-    }
-
-    private final class InternalOnAttachStateChangeListener implements View.OnAttachStateChangeListener
-    {
-        public void register(boolean register)
-        {
-            final View view = getView();
-            if (view == null)
-                return;
-
-            view.removeOnAttachStateChangeListener(this);
-
-            if (register)
-                view.addOnAttachStateChangeListener(this);
-        }
-
-        @Override
-        public void onViewAttachedToWindow(View v)
-        {
-            if (mAutoMode)
-                mOnPreDrawListener.register(true);
-        }
-
-        @Override
-        public void onViewDetachedFromWindow(View v)
-        {
-            mOnPreDrawListener.register(false);
         }
     }
 }
