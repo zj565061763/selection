@@ -25,12 +25,14 @@ import java.lang.ref.WeakReference;
 abstract class BaseSelectionConfig<T extends ViewProperties> implements SelectionConfig<T>
 {
     private final WeakReference<View> mView;
+    private boolean mIsRegister;
 
     private T mPropertiesNormal;
     private T mPropertiesSelected;
     private boolean mSelected;
 
     private final InternalOnPreDrawListener mOnPreDrawListener = new InternalOnPreDrawListener();
+    private final InternalOnAttachStateChangeListener mOnAttachStateChangeListener = new InternalOnAttachStateChangeListener();
 
     public BaseSelectionConfig(View view)
     {
@@ -50,6 +52,7 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
     public SelectionConfig setAutoMode(boolean autoMode)
     {
         mOnPreDrawListener.register(autoMode);
+        mOnAttachStateChangeListener.register(autoMode);
         return this;
     }
 
@@ -129,7 +132,10 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
         {
             final View view = getView();
             if (view == null)
+            {
+                mIsRegister = false;
                 return;
+            }
 
             final ViewTreeObserver observer = view.getViewTreeObserver();
             if (observer.isAlive())
@@ -141,6 +147,8 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
                     updateStateIfNeed();
                 }
             }
+
+            mIsRegister = register;
         }
 
         @Override
@@ -148,6 +156,33 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
         {
             updateStateIfNeed();
             return true;
+        }
+    }
+
+    private final class InternalOnAttachStateChangeListener implements View.OnAttachStateChangeListener
+    {
+        public void register(boolean register)
+        {
+            final View view = getView();
+            if (view == null)
+                return;
+
+            view.removeOnAttachStateChangeListener(this);
+            if (register)
+                view.addOnAttachStateChangeListener(this);
+        }
+
+        @Override
+        public void onViewAttachedToWindow(View v)
+        {
+            if (mIsRegister)
+                mOnPreDrawListener.register(true);
+        }
+
+        @Override
+        public void onViewDetachedFromWindow(View v)
+        {
+
         }
     }
 }
