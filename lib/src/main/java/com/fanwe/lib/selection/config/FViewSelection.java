@@ -19,6 +19,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fanwe.lib.selection.properties.ImageViewProperties;
+import com.fanwe.lib.selection.properties.TextViewProperties;
+import com.fanwe.lib.selection.properties.ViewProperties;
+
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -30,46 +34,49 @@ public final class FViewSelection
     {
     }
 
-    public static ViewSelectionConfig config(View view)
+    public static ViewSelectionConfig configView(View view, PropertiesConfiger<ViewProperties> configer)
     {
         if (view == null)
             return null;
 
-        final SelectionConfig config = MAP_CONFIG.get(view);
-        if (config instanceof ViewSelectionConfig)
-            return (ViewSelectionConfig) config;
-
-        final SimpleViewConfig newConfig = new SimpleViewConfig(view);
-        MAP_CONFIG.put(view, newConfig);
-        return newConfig;
+        SelectionConfig config = MAP_CONFIG.get(view);
+        if (!(config instanceof ViewSelectionConfig))
+        {
+            config = new SimpleViewConfig(view);
+            MAP_CONFIG.put(view, config);
+        }
+        config.setConfiger(configer);
+        return (ViewSelectionConfig) config;
     }
 
-    public static TextViewSelectionConfig config(TextView view)
+    public static TextViewSelectionConfig configTextView(TextView view, PropertiesConfiger<TextViewProperties> configer)
     {
         if (view == null)
             return null;
 
-        final SelectionConfig config = MAP_CONFIG.get(view);
-        if (config instanceof TextViewSelectionConfig)
-            return (TextViewSelectionConfig) config;
-
-        final SimpleTextViewConfig newConfig = new SimpleTextViewConfig(view);
-        MAP_CONFIG.put(view, newConfig);
-        return newConfig;
+        SelectionConfig config = MAP_CONFIG.get(view);
+        if (!(config instanceof TextViewSelectionConfig))
+        {
+            config = new SimpleTextViewConfig(view);
+            MAP_CONFIG.put(view, config);
+        }
+        config.setConfiger(configer);
+        return (TextViewSelectionConfig) config;
     }
 
-    public static ImageViewSelectionConfig config(ImageView view)
+    public static ImageViewSelectionConfig configImageView(ImageView view, PropertiesConfiger<ImageViewProperties> configer)
     {
         if (view == null)
             return null;
 
-        final SelectionConfig config = MAP_CONFIG.get(view);
-        if (config instanceof ImageViewSelectionConfig)
-            return (ImageViewSelectionConfig) config;
-
-        final SimpleImageViewConfig newConfig = new SimpleImageViewConfig(view);
-        MAP_CONFIG.put(view, newConfig);
-        return newConfig;
+        SelectionConfig config = MAP_CONFIG.get(view);
+        if (!(config instanceof ImageViewSelectionConfig))
+        {
+            config = new SimpleImageViewConfig(view);
+            MAP_CONFIG.put(view, config);
+        }
+        config.setConfiger(configer);
+        return (ImageViewSelectionConfig) config;
     }
 
     public static void removeConfig(View view)

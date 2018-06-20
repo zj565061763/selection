@@ -56,13 +56,16 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
     @Override
     public SelectionConfig setConfiger(PropertiesConfiger<T> configer)
     {
-        if (mPropertiesNormal == null)
-            mPropertiesNormal = newProperties();
+        if (configer != null)
+        {
+            if (mPropertiesNormal == null)
+                mPropertiesNormal = newProperties();
 
-        if (mPropertiesSelected == null)
-            mPropertiesSelected = newProperties();
+            if (mPropertiesSelected == null)
+                mPropertiesSelected = newProperties();
 
-        configer.config(mPropertiesNormal, mPropertiesSelected);
+            configer.config(mPropertiesNormal, mPropertiesSelected);
+        }
         return this;
     }
 

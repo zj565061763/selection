@@ -2,7 +2,7 @@
 管理android view的选中状态
 
 # Gradle
-`implementation 'com.fanwe.android:selection:1.0.0-beta2'`
+`implementation 'com.fanwe.android:selection:1.0.0-beta3'`
 
 # 简单demo
 ![](http://thumbsnap.com/i/jxj71QW0.gif?0614)
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        FViewSelection.config(mTextView).setConfiger(new SelectionConfig.PropertiesConfiger<TextViewProperties>()
+        FViewSelection.configTextView(mTextView, new PropertiesConfiger<TextViewProperties>()
         {
             @Override
             public void config(TextViewProperties normal, TextViewProperties selected)

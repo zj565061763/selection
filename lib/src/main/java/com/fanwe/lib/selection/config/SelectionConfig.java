@@ -52,15 +52,4 @@ public interface SelectionConfig<T extends ViewProperties>
      * @return
      */
     SelectionConfig setSelected(boolean selected);
-
-    interface PropertiesConfiger<T extends ViewProperties>
-    {
-        /**
-         * 配置选中和非选中状态的参数
-         *
-         * @param normal
-         * @param selected
-         */
-        void config(T normal, T selected);
-    }
 }
