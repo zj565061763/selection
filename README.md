@@ -2,7 +2,7 @@
 管理android view的选中状态
 
 # Gradle
-`implementation 'com.fanwe.android:selection:1.0.0-beta5'`
+[![](https://jitpack.io/v/zj565061763/selection.svg)](https://jitpack.io/#zj565061763/selection)
 
 # 简单demo
 ![](http://thumbsnap.com/i/jxj71QW0.gif?0614)
