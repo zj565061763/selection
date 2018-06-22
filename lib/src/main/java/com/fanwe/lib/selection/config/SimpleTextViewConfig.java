@@ -15,14 +15,14 @@
  */
 package com.fanwe.lib.selection.config;
 
-import android.view.View;
+import android.widget.TextView;
 
 import com.fanwe.lib.selection.properties.FViewProperties;
 import com.fanwe.lib.selection.properties.TextViewProperties;
 
 class SimpleTextViewConfig extends BaseSelectionConfig<TextViewProperties> implements TextViewSelectionConfig
 {
-    public SimpleTextViewConfig(View view)
+    public SimpleTextViewConfig(TextView view)
     {
         super(view);
     }

@@ -16,43 +16,59 @@
 package com.fanwe.lib.selection.config;
 
 import android.view.View;
-import android.view.ViewTreeObserver;
 
 import com.fanwe.lib.selection.properties.ViewProperties;
-
-import java.lang.ref.WeakReference;
+import com.fanwe.lib.updater.Updater;
+import com.fanwe.lib.updater.ViewUpdater;
+import com.fanwe.lib.updater.impl.OnPreDrawUpdater;
 
 abstract class BaseSelectionConfig<T extends ViewProperties> implements SelectionConfig<T>
 {
-    private final WeakReference<View> mView;
-    private boolean mIsRegister;
-
     private T mPropertiesNormal;
     private T mPropertiesSelected;
     private boolean mSelected;
 
-    private final InternalOnPreDrawListener mOnPreDrawListener = new InternalOnPreDrawListener();
-    private final InternalOnAttachStateChangeListener mOnAttachStateChangeListener = new InternalOnAttachStateChangeListener();
+    private ViewUpdater mViewUpdater;
 
     public BaseSelectionConfig(View view)
     {
         if (view == null)
             throw new NullPointerException("view is null");
 
-        mView = new WeakReference<>(view);
+        getViewUpdater().setView(view);
         setAutoMode(true);
+    }
+
+    private ViewUpdater getViewUpdater()
+    {
+        if (mViewUpdater == null)
+        {
+            mViewUpdater = new OnPreDrawUpdater();
+            mViewUpdater.setUpdatable(new Updater.Updatable()
+            {
+                @Override
+                public void update()
+                {
+                    updateStateIfNeed();
+                }
+            });
+        }
+        return mViewUpdater;
     }
 
     private View getView()
     {
-        return mView == null ? null : mView.get();
+        return getViewUpdater().getView();
     }
 
     @Override
     public SelectionConfig setAutoMode(boolean autoMode)
     {
-        mOnPreDrawListener.register(autoMode);
-        mOnAttachStateChangeListener.register(autoMode);
+        if (autoMode)
+            getViewUpdater().start();
+        else
+            getViewUpdater().stop();
+
         return this;
     }
 
@@ -123,66 +139,6 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
                     updateViewState(selected, view);
                 }
             });
-        }
-    }
-
-    private final class InternalOnPreDrawListener implements ViewTreeObserver.OnPreDrawListener
-    {
-        public void register(boolean register)
-        {
-            final View view = getView();
-            if (view == null)
-            {
-                mIsRegister = false;
-                return;
-            }
-
-            final ViewTreeObserver observer = view.getViewTreeObserver();
-            if (observer.isAlive())
-            {
-                observer.removeOnPreDrawListener(this);
-                if (register)
-                {
-                    observer.addOnPreDrawListener(this);
-                    updateStateIfNeed();
-                }
-            }
-
-            mIsRegister = register;
-        }
-
-        @Override
-        public boolean onPreDraw()
-        {
-            updateStateIfNeed();
-            return true;
-        }
-    }
-
-    private final class InternalOnAttachStateChangeListener implements View.OnAttachStateChangeListener
-    {
-        public void register(boolean register)
-        {
-            final View view = getView();
-            if (view == null)
-                return;
-
-            view.removeOnAttachStateChangeListener(this);
-            if (register)
-                view.addOnAttachStateChangeListener(this);
-        }
-
-        @Override
-        public void onViewAttachedToWindow(View v)
-        {
-            if (mIsRegister)
-                mOnPreDrawListener.register(true);
-        }
-
-        @Override
-        public void onViewDetachedFromWindow(View v)
-        {
-
         }
     }
 }

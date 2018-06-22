@@ -15,14 +15,14 @@
  */
 package com.fanwe.lib.selection.config;
 
-import android.view.View;
+import android.widget.ImageView;
 
 import com.fanwe.lib.selection.properties.FViewProperties;
 import com.fanwe.lib.selection.properties.ImageViewProperties;
 
 class SimpleImageViewConfig extends BaseSelectionConfig<ImageViewProperties> implements ImageViewSelectionConfig
 {
-    public SimpleImageViewConfig(View view)
+    public SimpleImageViewConfig(ImageView view)
     {
         super(view);
     }
