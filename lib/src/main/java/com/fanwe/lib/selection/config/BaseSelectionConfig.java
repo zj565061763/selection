@@ -18,9 +18,8 @@ package com.fanwe.lib.selection.config;
 import android.view.View;
 
 import com.fanwe.lib.selection.properties.ViewProperties;
-import com.fanwe.lib.updater.Updater;
-import com.fanwe.lib.updater.ViewUpdater;
-import com.fanwe.lib.updater.impl.OnPreDrawUpdater;
+import com.fanwe.lib.viewupdater.ViewUpdater;
+import com.fanwe.lib.viewupdater.impl.OnPreDrawUpdater;
 
 abstract class BaseSelectionConfig<T extends ViewProperties> implements SelectionConfig<T>
 {
@@ -44,7 +43,7 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
         if (mViewUpdater == null)
         {
             mViewUpdater = new OnPreDrawUpdater();
-            mViewUpdater.setUpdatable(new Updater.Updatable()
+            mViewUpdater.setUpdatable(new ViewUpdater.Updatable()
             {
                 @Override
                 public void update()
