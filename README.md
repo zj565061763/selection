@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mTextView = findViewById(R.id.textview);
+
         mTextView.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -28,20 +29,16 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        FViewSelection.configTextView(mTextView, new PropertiesConfiger<TextViewProperties>()
+        FViewSelection.ofTextView(mTextView).setConfig(new PropertiesConfig<TextViewProperties>()
         {
             @Override
             public void config(TextViewProperties normal, TextViewProperties selected)
             {
                 // 配置正常状态的参数
-                normal.setTextColor(Color.BLACK)
-                        .setTextSize(40)
-                        .setAlpha(0.5f);
+                normal.setTextColor(Color.BLACK).setTextSize(40);
 
                 // 配置选中状态的参数
-                selected.setTextColor(Color.RED)
-                        .setTextSize(60)
-                        .setAlpha(1.0f);
+                selected.setTextColor(Color.RED).setTextSize(60);
             }
         }).setSelected(false);
     }
