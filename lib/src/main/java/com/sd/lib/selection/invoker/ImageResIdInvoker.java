@@ -11,7 +11,7 @@ public class ImageResIdInvoker implements PropertyInvoker<Integer>
         if (value == null)
             return;
         if (!(view instanceof ImageView))
-            throw new IllegalArgumentException("ofView must be instance of ImageView");
+            throw new IllegalArgumentException("view must be instance of ImageView");
 
         final ImageView imageView = (ImageView) view;
         imageView.setImageResource(value);

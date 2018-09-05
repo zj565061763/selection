@@ -21,7 +21,7 @@ public interface SelectionConfig<T extends ViewProperties>
      * @param configer
      * @return
      */
-    SelectionConfig setConfiger(PropertiesConfiger<T> configer);
+    SelectionConfig setConfig(PropertiesConfig<T> configer);
 
     /**
      * 清空配置

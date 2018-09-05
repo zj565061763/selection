@@ -4,10 +4,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.sd.lib.selection.properties.ImageViewProperties;
-import com.sd.lib.selection.properties.TextViewProperties;
-import com.sd.lib.selection.properties.ViewProperties;
-
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -19,7 +15,7 @@ public final class FViewSelection
     {
     }
 
-    public static ViewSelectionConfig configView(View view, PropertiesConfiger<ViewProperties> configer)
+    public static ViewSelectionConfig ofView(View view)
     {
         if (view == null)
             return null;
@@ -30,11 +26,10 @@ public final class FViewSelection
             config = new SimpleViewConfig(view);
             MAP_CONFIG.put(view, config);
         }
-        config.setConfiger(configer);
         return (ViewSelectionConfig) config;
     }
 
-    public static TextViewSelectionConfig configTextView(TextView view, PropertiesConfiger<TextViewProperties> configer)
+    public static TextViewSelectionConfig ofTextView(TextView view)
     {
         if (view == null)
             return null;
@@ -45,11 +40,10 @@ public final class FViewSelection
             config = new SimpleTextViewConfig(view);
             MAP_CONFIG.put(view, config);
         }
-        config.setConfiger(configer);
         return (TextViewSelectionConfig) config;
     }
 
-    public static ImageViewSelectionConfig configImageView(ImageView view, PropertiesConfiger<ImageViewProperties> configer)
+    public static ImageViewSelectionConfig ofImageView(ImageView view)
     {
         if (view == null)
             return null;
@@ -60,7 +54,6 @@ public final class FViewSelection
             config = new SimpleImageViewConfig(view);
             MAP_CONFIG.put(view, config);
         }
-        config.setConfiger(configer);
         return (ImageViewSelectionConfig) config;
     }
 

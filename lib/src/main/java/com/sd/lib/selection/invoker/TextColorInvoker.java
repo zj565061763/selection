@@ -11,7 +11,7 @@ public class TextColorInvoker implements PropertyInvoker<Integer>
         if (value == null)
             return;
         if (!(view instanceof TextView))
-            throw new IllegalArgumentException("ofView must be instance of TextView");
+            throw new IllegalArgumentException("view must be instance of TextView");
 
         final TextView textView = (TextView) view;
         textView.setTextColor(value);
