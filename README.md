@@ -5,7 +5,7 @@
 [![](https://jitpack.io/v/zj565061763/selection.svg)](https://jitpack.io/#zj565061763/selection)
 
 # 简单demo
-![](http://thumbsnap.com/i/jxj71QW0.gif?0614)
+![](https://github.com/zj565061763/selection/blob/master/screenshot/selection.gif?raw=true)
 
 ```java
 public class MainActivity extends AppCompatActivity
