@@ -100,8 +100,7 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
         if (view == null)
             return;
 
-        final boolean selected = view.isSelected();
-        if (mSelected != selected)
+        if (mSelected != view.isSelected())
             view.post(mUpdateRunnable);
     }
 
