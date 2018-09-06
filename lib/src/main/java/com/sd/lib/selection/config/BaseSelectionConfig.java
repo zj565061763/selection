@@ -21,6 +21,7 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
 
         getViewUpdater().setView(view);
         setAutoMode(true);
+        updateView(view);
     }
 
     private ViewUpdater getViewUpdater()
