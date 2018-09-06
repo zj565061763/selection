@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity
             public void config(TextViewProperties normal, TextViewProperties selected)
             {
                 // 配置正常状态的参数
-                normal.setTextColor(Color.BLACK).setTextSize(40);
+                normal.setTextColor(Color.BLUE).setTextSize(60);
 
                 // 配置选中状态的参数
-                selected.setTextColor(Color.RED).setTextSize(60);
+                selected.setTextColor(Color.RED).setTextSize(100);
             }
         }).setSelected(false);
     }
