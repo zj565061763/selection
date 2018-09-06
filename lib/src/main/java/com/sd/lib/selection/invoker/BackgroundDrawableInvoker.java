@@ -8,6 +8,9 @@ public class BackgroundDrawableInvoker implements PropertyInvoker<Drawable>
     @Override
     public void invoke(View view, Drawable value)
     {
+        if (value == null)
+            return;
+
         final int paddingLeft = view.getPaddingLeft();
         final int paddingTop = view.getPaddingTop();
         final int paddingRight = view.getPaddingRight();
