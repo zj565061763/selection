@@ -89,7 +89,7 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
         if (view != null)
         {
             view.setSelected(selected);
-            updateView(selected, view);
+            updateView(view);
         }
         return this;
     }
@@ -101,27 +101,27 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
             return;
 
         final boolean selected = view.isSelected();
-        if (mSelected == selected)
-            return;
-
-        view.post(new Runnable()
-        {
-            @Override
-            public void run()
-            {
-                updateView(selected, view);
-            }
-        });
+        if (mSelected != selected)
+            view.post(mUpdateRunnable);
     }
 
-    private void updateView(boolean selected, View view)
+    private final Runnable mUpdateRunnable = new Runnable()
+    {
+        @Override
+        public void run()
+        {
+            updateView(getView());
+        }
+    };
+
+    private void updateView(View view)
     {
         if (view == null)
             return;
 
-        mSelected = selected;
+        mSelected = view.isSelected();
 
-        if (selected)
+        if (mSelected)
         {
             if (mPropertiesSelected != null)
                 mPropertiesSelected.invoke(view);
@@ -130,27 +130,5 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
             if (mPropertiesNormal != null)
                 mPropertiesNormal.invoke(view);
         }
-    }
-
-    private final class UpdateRunnable implements Runnable
-    {
-        private final boolean nSelected;
-
-        public UpdateRunnable(boolean selected)
-        {
-            nSelected = selected;
-        }
-
-        @Override
-        public void run()
-        {
-            updateView(nSelected, getView());
-        }
-    }
-
-    private void synchronizeSelected()
-    {
-        final View view = getView();
-        mSelected = view == null ? false : view.isSelected();
     }
 }
