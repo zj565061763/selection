@@ -33,7 +33,7 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
                 @Override
                 public void update()
                 {
-                    updateStateIfNeed();
+                    updateViewIfNeed();
                 }
             });
         }
@@ -85,14 +85,41 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
     @Override
     public SelectionConfig setSelected(boolean selected)
     {
-        updateViewState(selected, getView());
+        final View view = getView();
+        if (view != null)
+        {
+            view.setSelected(selected);
+            updateView(selected, view);
+        }
         return this;
     }
 
-    private void updateViewState(boolean selected, View view)
+    private void updateViewIfNeed()
+    {
+        final View view = getView();
+        if (view == null)
+            return;
+
+        final boolean selected = view.isSelected();
+        if (mSelected == selected)
+            return;
+
+        view.post(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                updateView(selected, view);
+            }
+        });
+    }
+
+    private void updateView(boolean selected, View view)
     {
         if (view == null)
             return;
+
+        mSelected = selected;
 
         if (selected)
         {
@@ -105,24 +132,25 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
         }
     }
 
-    private void updateStateIfNeed()
+    private final class UpdateRunnable implements Runnable
+    {
+        private final boolean nSelected;
+
+        public UpdateRunnable(boolean selected)
+        {
+            nSelected = selected;
+        }
+
+        @Override
+        public void run()
+        {
+            updateView(nSelected, getView());
+        }
+    }
+
+    private void synchronizeSelected()
     {
         final View view = getView();
-        if (view == null)
-            return;
-
-        final boolean selected = view.isSelected();
-        if (mSelected != selected)
-        {
-            mSelected = selected;
-            view.post(new Runnable()
-            {
-                @Override
-                public void run()
-                {
-                    updateViewState(selected, view);
-                }
-            });
-        }
+        mSelected = view == null ? false : view.isSelected();
     }
 }
