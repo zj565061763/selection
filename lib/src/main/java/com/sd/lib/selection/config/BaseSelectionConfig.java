@@ -37,7 +37,10 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
     @Override
     public SelectionConfig setAutoMode(boolean autoMode)
     {
-        mViewListener.start(autoMode);
+        if (autoMode)
+            mViewListener.start();
+        else
+            mViewListener.stop();
         return this;
     }
 
