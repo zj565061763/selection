@@ -18,10 +18,10 @@ public interface SelectionConfig<T extends ViewProperties>
     /**
      * 配置状态参数
      *
-     * @param configer
+     * @param config
      * @return
      */
-    SelectionConfig setConfig(PropertiesConfig<T> configer);
+    SelectionConfig setConfig(PropertiesConfig<T> config);
 
     /**
      * 清空配置
