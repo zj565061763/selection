@@ -10,6 +10,8 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
     private T mPropertiesSelected;
     private boolean mSelected;
 
+    private boolean mAsync = true;
+
     public BaseSelectionConfig(View view)
     {
         if (view == null)
@@ -41,6 +43,13 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
             mViewListener.start();
         else
             mViewListener.stop();
+        return this;
+    }
+
+    @Override
+    public SelectionConfig setAsync(boolean async)
+    {
+        mAsync = async;
         return this;
     }
 
@@ -89,7 +98,12 @@ abstract class BaseSelectionConfig<T extends ViewProperties> implements Selectio
             return;
 
         if (mSelected != view.isSelected())
-            view.post(mUpdateRunnable);
+        {
+            if (mAsync)
+                view.post(mUpdateRunnable);
+            else
+                updateView(view);
+        }
     }
 
     private final Runnable mUpdateRunnable = new Runnable()

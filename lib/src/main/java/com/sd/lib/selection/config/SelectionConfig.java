@@ -1,5 +1,7 @@
 package com.sd.lib.selection.config;
 
+import android.os.Handler;
+
 import com.sd.lib.selection.properties.ViewProperties;
 
 /**
@@ -14,6 +16,14 @@ public interface SelectionConfig<T extends ViewProperties>
      * @return
      */
     SelectionConfig setAutoMode(boolean autoMode);
+
+    /**
+     * 设置是否通过{@link Handler#post(Runnable)}更新UI，默认true
+     *
+     * @param async
+     * @return
+     */
+    SelectionConfig setAsync(boolean async);
 
     /**
      * 配置状态参数
