@@ -57,7 +57,7 @@ public final class FViewSelection
         return (ImageViewSelectionConfig) config;
     }
 
-    public static void removeConfig(View view)
+    public static void remove(View view)
     {
         final SelectionConfig config = MAP_CONFIG.remove(view);
         if (config != null)
