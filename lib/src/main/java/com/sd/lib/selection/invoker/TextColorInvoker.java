@@ -1,20 +1,15 @@
 package com.sd.lib.selection.invoker;
 
-import android.view.View;
 import android.widget.TextView;
 
-public class TextColorInvoker implements PropertyInvoker<Integer>
+public class TextColorInvoker extends TextViewInvoker<Integer>
 {
     @Override
-    public void invoke(View view, Integer value)
+    protected void invokeImpl(TextView view, Integer value)
     {
-        if (!(view instanceof TextView))
-            throw new IllegalArgumentException("view must be instance of TextView");
-
         if (value == null)
             return;
 
-        final TextView textView = (TextView) view;
-        textView.setTextColor(value);
+        view.setTextColor(value);
     }
 }
