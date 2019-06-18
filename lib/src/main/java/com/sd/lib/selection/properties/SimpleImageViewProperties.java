@@ -2,16 +2,16 @@ package com.sd.lib.selection.properties;
 
 import android.view.View;
 
-import com.sd.lib.selection.invoker.ImageResIdInvoker;
+import com.sd.lib.selection.invoker.imageview.ImageResourceInvoker;
 
 class SimpleImageViewProperties extends SimpleViewProperties implements ImageViewProperties
 {
-    private Integer mImageResId;
+    private Integer mImageResource;
 
     @Override
     public ImageViewProperties setImageResId(Integer value)
     {
-        mImageResId = value;
+        mImageResource = value;
         return this;
     }
 
@@ -19,7 +19,7 @@ class SimpleImageViewProperties extends SimpleViewProperties implements ImageVie
     public ImageViewProperties clear()
     {
         super.clear();
-        mImageResId = null;
+        mImageResource = null;
         return this;
     }
 
@@ -29,6 +29,6 @@ class SimpleImageViewProperties extends SimpleViewProperties implements ImageVie
         super.invoke(view);
 
         if (view != null)
-            new ImageResIdInvoker().invoke(view, mImageResId);
+            new ImageResourceInvoker().invoke(view, mImageResource);
     }
 }
