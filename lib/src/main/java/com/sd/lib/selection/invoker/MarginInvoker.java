@@ -25,10 +25,10 @@ public class MarginInvoker implements PropertyInvoker<Integer[]>
         final int right = value[2] != null ? value[2] : params.rightMargin;
         final int bottom = value[3] != null ? value[3] : params.bottomMargin;
 
-        if (left != params.leftMargin
-                || top != params.topMargin
-                || right != params.rightMargin
-                || bottom != params.bottomMargin)
+        if (params.leftMargin != left
+                || params.topMargin != top
+                || params.rightMargin != right
+                || params.bottomMargin != bottom)
         {
             params.leftMargin = left;
             params.topMargin = top;
