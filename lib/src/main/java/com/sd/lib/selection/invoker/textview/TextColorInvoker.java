@@ -1,4 +1,4 @@
-package com.sd.lib.selection.invoker;
+package com.sd.lib.selection.invoker.textview;
 
 import android.widget.TextView;
 

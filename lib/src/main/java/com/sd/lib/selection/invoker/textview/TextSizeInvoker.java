@@ -1,4 +1,4 @@
-package com.sd.lib.selection.invoker;
+package com.sd.lib.selection.invoker.textview;
 
 import android.util.TypedValue;
 import android.widget.TextView;

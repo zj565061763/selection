@@ -2,8 +2,8 @@ package com.sd.lib.selection.properties;
 
 import android.view.View;
 
-import com.sd.lib.selection.invoker.TextColorInvoker;
-import com.sd.lib.selection.invoker.TextSizeInvoker;
+import com.sd.lib.selection.invoker.textview.TextColorInvoker;
+import com.sd.lib.selection.invoker.textview.TextSizeInvoker;
 
 class SimpleTextViewProperties extends SimpleViewProperties implements TextViewProperties
 {

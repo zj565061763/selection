@@ -1,7 +1,9 @@
-package com.sd.lib.selection.invoker;
+package com.sd.lib.selection.invoker.textview;
 
 import android.view.View;
 import android.widget.TextView;
+
+import com.sd.lib.selection.invoker.PropertyInvoker;
 
 public abstract class TextViewInvoker<T> implements PropertyInvoker<T>
 {
