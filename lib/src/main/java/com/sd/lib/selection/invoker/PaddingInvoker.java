@@ -18,6 +18,12 @@ public class PaddingInvoker implements PropertyInvoker<Integer[]>
         final int right = value[2] != null ? value[2] : view.getPaddingRight();
         final int bottom = value[3] != null ? value[3] : view.getPaddingBottom();
 
-        view.setPadding(left, top, right, bottom);
+        if (left != view.getPaddingLeft()
+                || top != view.getPaddingTop()
+                || right != view.getPaddingRight()
+                || bottom != view.getPaddingBottom())
+        {
+            view.setPadding(left, top, right, bottom);
+        }
     }
 }
