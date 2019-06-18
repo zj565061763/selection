@@ -89,6 +89,38 @@ public interface ViewProperties
     ViewProperties setPaddingBottom(Integer value);
 
     /**
+     * 设置左边margin
+     *
+     * @param value
+     * @return
+     */
+    ViewProperties setMarginLeft(Integer value);
+
+    /**
+     * 设置顶部margin
+     *
+     * @param value
+     * @return
+     */
+    ViewProperties setMarginTop(Integer value);
+
+    /**
+     * 设置右边margin
+     *
+     * @param value
+     * @return
+     */
+    ViewProperties setMarginRight(Integer value);
+
+    /**
+     * 设置底部margin
+     *
+     * @param value
+     * @return
+     */
+    ViewProperties setMarginBottom(Integer value);
+
+    /**
      * 清空所有设置的属性值
      *
      * @return
