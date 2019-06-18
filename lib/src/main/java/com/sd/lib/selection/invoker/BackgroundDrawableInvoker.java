@@ -11,12 +11,12 @@ public class BackgroundDrawableInvoker implements PropertyInvoker<Drawable>
         if (value == null)
             return;
 
-        final int paddingLeft = view.getPaddingLeft();
-        final int paddingTop = view.getPaddingTop();
-        final int paddingRight = view.getPaddingRight();
-        final int paddingBottom = view.getPaddingBottom();
+        final int left = view.getPaddingLeft();
+        final int top = view.getPaddingTop();
+        final int right = view.getPaddingRight();
+        final int bottom = view.getPaddingBottom();
 
         view.setBackgroundDrawable(value);
-        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+        view.setPadding(left, top, right, bottom);
     }
 }

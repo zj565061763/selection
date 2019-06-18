@@ -12,7 +12,10 @@ public class WidthInvoker implements PropertyInvoker<Integer>
             return;
 
         final ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (params != null && params.width != value)
+        if (params == null)
+            return;
+
+        if (params.width != value)
         {
             params.width = value;
             view.setLayoutParams(params);

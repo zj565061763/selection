@@ -12,7 +12,10 @@ public class HeightInvoker implements PropertyInvoker<Integer>
             return;
 
         final ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (params != null && params.height != value)
+        if (params == null)
+            return;
+
+        if (params.height != value)
         {
             params.height = value;
             view.setLayoutParams(params);
