@@ -8,10 +8,11 @@ public class ImageResIdInvoker implements PropertyInvoker<Integer>
     @Override
     public void invoke(View view, Integer value)
     {
-        if (value == null)
-            return;
         if (!(view instanceof ImageView))
             throw new IllegalArgumentException("view must be instance of ImageView");
+
+        if (value == null)
+            return;
 
         final ImageView imageView = (ImageView) view;
         imageView.setImageResource(value);
