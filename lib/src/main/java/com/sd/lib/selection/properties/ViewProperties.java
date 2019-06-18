@@ -57,6 +57,38 @@ public interface ViewProperties
     ViewProperties setHeight(Integer value);
 
     /**
+     * 设置左边padding
+     *
+     * @param value
+     * @return
+     */
+    ViewProperties setPaddingLeft(Integer value);
+
+    /**
+     * 设置顶部padding
+     *
+     * @param value
+     * @return
+     */
+    ViewProperties setPaddingTop(Integer value);
+
+    /**
+     * 设置右边padding
+     *
+     * @param value
+     * @return
+     */
+    ViewProperties setPaddingRight(Integer value);
+
+    /**
+     * 设置底部padding
+     *
+     * @param value
+     * @return
+     */
+    ViewProperties setPaddingBottom(Integer value);
+
+    /**
      * 清空所有设置的属性值
      *
      * @return
