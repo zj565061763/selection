@@ -6,12 +6,18 @@ package com.sd.lib.selection.properties;
 public interface ImageViewProperties extends ViewProperties
 {
     /**
-     * 设置图片资源id
+     * {@link #setImageResource(Integer)}
+     */
+    @Deprecated
+    ImageViewProperties setImageResId(Integer value);
+
+    /**
+     * 设置图片资源
      *
      * @param value
      * @return
      */
-    ImageViewProperties setImageResId(Integer value);
+    ImageViewProperties setImageResource(Integer value);
 
     @Override
     ImageViewProperties clear();

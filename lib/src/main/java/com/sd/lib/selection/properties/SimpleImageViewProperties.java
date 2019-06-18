@@ -11,6 +11,13 @@ class SimpleImageViewProperties extends SimpleViewProperties implements ImageVie
     @Override
     public ImageViewProperties setImageResId(Integer value)
     {
+        setImageResource(value);
+        return this;
+    }
+
+    @Override
+    public ImageViewProperties setImageResource(Integer value)
+    {
         mImageResource = value;
         return this;
     }
