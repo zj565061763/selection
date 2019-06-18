@@ -121,6 +121,14 @@ public interface ViewProperties
     ViewProperties setMarginBottom(Integer value);
 
     /**
+     * 设置View的重力属性
+     *
+     * @param value
+     * @return
+     */
+    ViewProperties setLayoutGravity(Integer value);
+
+    /**
      * 清空所有设置的属性值
      *
      * @return

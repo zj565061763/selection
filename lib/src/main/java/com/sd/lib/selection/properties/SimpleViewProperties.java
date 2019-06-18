@@ -7,6 +7,7 @@ import android.view.View;
 import com.sd.lib.selection.invoker.AlphaInvoker;
 import com.sd.lib.selection.invoker.BackgroundDrawableInvoker;
 import com.sd.lib.selection.invoker.HeightInvoker;
+import com.sd.lib.selection.invoker.LayoutGravityInvoker;
 import com.sd.lib.selection.invoker.MarginInvoker;
 import com.sd.lib.selection.invoker.PaddingInvoker;
 import com.sd.lib.selection.invoker.VisibilityInvoker;
@@ -30,6 +31,8 @@ class SimpleViewProperties implements ViewProperties
     private Integer mMarginTop;
     private Integer mMarginRight;
     private Integer mMarginBottom;
+
+    private Integer mLayoutGravity;
 
     @Override
     public ViewProperties setAlpha(Float value)
@@ -130,6 +133,13 @@ class SimpleViewProperties implements ViewProperties
     }
 
     @Override
+    public ViewProperties setLayoutGravity(Integer value)
+    {
+        mLayoutGravity = value;
+        return this;
+    }
+
+    @Override
     public ViewProperties clear()
     {
         mAlpha = null;
@@ -148,6 +158,8 @@ class SimpleViewProperties implements ViewProperties
         mMarginTop = null;
         mMarginRight = null;
         mMarginBottom = null;
+
+        mLayoutGravity = null;
         return this;
     }
 
@@ -162,6 +174,7 @@ class SimpleViewProperties implements ViewProperties
             new MarginInvoker().invoke(view, new Integer[]{mMarginLeft, mMarginTop, mMarginRight, mMarginBottom});
             new WidthInvoker().invoke(view, mWidth);
             new HeightInvoker().invoke(view, mHeight);
+            new LayoutGravityInvoker().invoke(view, mLayoutGravity);
             new VisibilityInvoker().invoke(view, mVisibility);
         }
     }
