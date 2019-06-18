@@ -21,6 +21,22 @@ public interface TextViewProperties extends ViewProperties
      */
     TextViewProperties setTextSize(Integer value);
 
+    /**
+     * 设置文字重力属性
+     *
+     * @param value
+     * @return
+     */
+    TextViewProperties setGravity(Integer value);
+
+    /**
+     * 设置文字最大行数
+     *
+     * @param value
+     * @return
+     */
+    TextViewProperties setMaxLines(Integer value);
+
     @Override
     TextViewProperties clear();
 }
