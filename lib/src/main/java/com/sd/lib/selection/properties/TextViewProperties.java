@@ -1,5 +1,7 @@
 package com.sd.lib.selection.properties;
 
+import android.graphics.Typeface;
+
 /**
  * TextView属性配置接口
  */
@@ -36,6 +38,17 @@ public interface TextViewProperties extends ViewProperties
      * @return
      */
     TextViewProperties setMaxLines(Integer value);
+
+    /**
+     * 设置字体<br>
+     * {@link Typeface#defaultFromStyle(int)}<br>
+     * {@link Typeface#BOLD}<br>
+     * {@link Typeface#NORMAL}<br>
+     *
+     * @param value
+     * @return
+     */
+    TextViewProperties setTypeface(Typeface value);
 
     @Override
     TextViewProperties clear();

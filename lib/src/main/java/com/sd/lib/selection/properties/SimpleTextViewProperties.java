@@ -1,11 +1,13 @@
 package com.sd.lib.selection.properties;
 
+import android.graphics.Typeface;
 import android.view.View;
 
 import com.sd.lib.selection.invoker.textview.TextColorInvoker;
 import com.sd.lib.selection.invoker.textview.TextGravityInvoker;
 import com.sd.lib.selection.invoker.textview.TextMaxLinesInvoker;
 import com.sd.lib.selection.invoker.textview.TextSizeInvoker;
+import com.sd.lib.selection.invoker.textview.TextTypefaceInvoker;
 
 class SimpleTextViewProperties extends SimpleViewProperties implements TextViewProperties
 {
@@ -13,6 +15,7 @@ class SimpleTextViewProperties extends SimpleViewProperties implements TextViewP
     private Integer mTextSize;
     private Integer mGravity;
     private Integer mMaxLines;
+    private Typeface mTypeface;
 
     @Override
     public TextViewProperties setTextColor(Integer value)
@@ -42,6 +45,13 @@ class SimpleTextViewProperties extends SimpleViewProperties implements TextViewP
     }
 
     @Override
+    public TextViewProperties setTypeface(Typeface value)
+    {
+        mTypeface = value;
+        return this;
+    }
+
+    @Override
     public TextViewProperties clear()
     {
         super.clear();
@@ -49,6 +59,7 @@ class SimpleTextViewProperties extends SimpleViewProperties implements TextViewP
         mTextSize = null;
         mGravity = null;
         mMaxLines = null;
+        mTypeface = null;
         return this;
     }
 
@@ -63,6 +74,7 @@ class SimpleTextViewProperties extends SimpleViewProperties implements TextViewP
             new TextSizeInvoker().invoke(view, mTextSize);
             new TextGravityInvoker().invoke(view, mGravity);
             new TextMaxLinesInvoker().invoke(view, mMaxLines);
+            new TextTypefaceInvoker().invoke(view, mTypeface);
         }
     }
 }
